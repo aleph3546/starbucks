@@ -17,6 +17,8 @@ searchInputEl.addEventListener('blur', function () {
 
 // document는 html 자체를 의미한다.
 const badgeEl = document.querySelector('header .badges');
+const toTopel = document.querySelector('#to-top');
+
 // window는 프로젝트가 나타나 있는 하나의 탭을 의미한다. 보고 있는 화면 창.
 window.addEventListener('scroll', _.throttle(function () {
   console.log(window.scrollY);
@@ -27,15 +29,30 @@ window.addEventListener('scroll', _.throttle(function () {
       opacity: 0,
       display: 'none'
     });
+    // 버튼 보이기
+    gsap.to(toTopel, .2, {
+      x: 0
+    });
+
   } else {
     //배지 보이기
     gsap.to(badgeEl, .6, {
       opacity: 1,
       display: 'block'
     });
+    // 버튼 숨기기
+    gsap.to(toTopel, .2, {
+      x: 100
+    });
   }
 }, 300));
 // _.throttle(함수, 밀리세컨드시간)
+
+toTopel.addEventListener('click', function () {
+  gsap.to(window, .7, {
+    scrollTo: 0
+  });
+});
 
 
 const fadeEls = document.querySelectorAll('.visual .fade-in');
@@ -132,3 +149,5 @@ spyEls.forEach(function (spyEl) {
     .addTo(new ScrollMagic.Controller());
 });
 
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear(); //2023이 들어간다
