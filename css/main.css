@@ -354,7 +354,7 @@ header .badges .badge {
   font-weight: 700;
   margin-right: 20px;
 }
-.notice .notice-line .inner__left .swiper {
+.notice .notice-line .inner__left .swiper-container {
   height: 62px;
   flex-grow: 1;
 }
@@ -410,7 +410,7 @@ header .badges .badge {
 .notice .promotion.hide {
   height: 0;
 }
-.notice .promotion .swiper {
+.notice .promotion .swiper-container {
   width: calc(819px * 3 + 20px);
   /* width: calc(100% - 50px); <---예시 */
   height: 553px;
